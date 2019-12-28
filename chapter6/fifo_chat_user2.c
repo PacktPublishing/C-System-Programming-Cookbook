@@ -8,23 +8,22 @@
 
 int main() 
 { 
-    int fd; 
     char* myfifo = "/tmp/chat"; 
     mkfifo(myfifo, 0600); 
   
     char msgReceived[MAX_LENGTH], msgToSend[MAX_LENGTH]; 
     while (1) 
     { 
-        fd = open(myfifo, O_RDONLY); 
-        read(fd, msgReceived, sizeof(msgReceived)); 
-        printf("User2: %s\n", msgReceived); 
-        close(fd); 
+        int fdUser2 = open(myfifo, O_RDONLY); 
+        read(fdUser2, msgReceived, sizeof(msgReceived)); 
+        printf("User1: %s\n", msgReceived); 
+        close(fdUser2); 
 
-        fd = open(myfifo, O_WRONLY); 
-	printf("Uset1: ");
+        int fdUser1 = open(myfifo, O_WRONLY); 
+	printf("User2: ");
         fgets(msgToSend, MAX_LENGTH, stdin); 
-        write(fd, msgToSend, strlen(msgToSend)+1); 
-        close(fd); 
+        write(fdUser1, msgToSend, strlen(msgToSend)+1); 
+        close(fdUser1); 
     } 
     return 0; 
 } 

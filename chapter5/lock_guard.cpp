@@ -13,9 +13,6 @@ void increment(ThreadInfo &info)
 	std::lock_guard<std::mutex> lock(info.mutex);
 	std::cout << "Thread Started ... " << std::endl;
 
-	if (info.counter < 0)
-		return;
-
 	for (int i = 0; i < 100000; ++i) 
 		info.counter++;
 
@@ -25,7 +22,6 @@ void increment(ThreadInfo &info)
 int main() 
 { 
 	ThreadInfo thInfo;
-	thInfo.counter = 0;
 
 	std::thread t1 (increment, std::ref(thInfo));
 	std::thread t2 (increment, std::ref(thInfo));
@@ -33,7 +29,7 @@ int main()
 	t1.join();
 	t2.join();
 
-	std::cout << "Threads elaboration finished. Counter = " << thInfo.counter << std::endl;
+	std::cout << "lock_guard:: Threads elaboration finished. Counter = " << thInfo.counter << std::endl;
 	return 0; 
 }
 

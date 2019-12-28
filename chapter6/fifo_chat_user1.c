@@ -8,7 +8,6 @@
 
 int main() 
 { 
-    int fd; 
     char* fifoChat = "/tmp/chat"; 
     mkfifo(fifoChat, 0600); 
   
@@ -16,17 +15,17 @@ int main()
     while (1) 
     { 
 	// write section
-        fd = open(fifoChat, O_WRONLY); 
-	printf("Uset1: ");
+        int fdUser1 = open(fifoChat, O_WRONLY); 
+	printf("User1: ");
         fgets(msgToSend, MAX_LENGTH, stdin); 
-        write(fd, msgToSend, strlen(msgToSend)+1); 
-        close(fd); 
+        write(fdUser1, msgToSend, strlen(msgToSend)+1); 
+        close(fdUser1); 
   
 	// read section
-        fd = open(fifoChat, O_RDONLY); 
-        read(fd, msgReceived, sizeof(msgReceived)); 
+        int fdUser2 = open(fifoChat, O_RDONLY); 
+        read(fdUser2, msgReceived, sizeof(msgReceived)); 
         printf("User2: %s\n", msgReceived); 
-        close(fd); 
+        close(fdUser2); 
     } 
     return 0; 
 } 

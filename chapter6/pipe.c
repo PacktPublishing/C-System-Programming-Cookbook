@@ -1,19 +1,23 @@
 #include <stdio.h> 
 #include <unistd.h> 
 #include <string.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 char* msg1 = "Message sent from Child to Parent"; 
 char* msg2 = "Message sent from Parent to Child"; 
 #define MSGSIZE 34
+#define IN      0
+#define OUT     1
 
 int main() 
 { 
-    char inbuf1[MSGSIZE]; 
-    char inbuf2[MSGSIZE]; 
+    char inbufToParent[MSGSIZE]; 
+    char inbufToChild[MSGSIZE]; 
     int childToParent[2], parentToChild[2], pid, nbytes; 
   
-    inbuf1[MSGSIZE-1] = 0;
-    inbuf2[MSGSIZE-1] = 0;
+    inbufToParent[0] = 0;
+    inbufToChild[0] = 0;
     if (pipe(childToParent) < 0) 
         return 1;
  
@@ -23,27 +27,27 @@ int main()
     if ((pid = fork()) > 0) 
     { 
 	printf("Created child with PID = %d\n", pid);
-	close(childToParent[0]);
-        write(childToParent[1], msg1, strlen(msg1));
-	close(childToParent[1]);
+	close(childToParent[IN]);
+        write(childToParent[OUT], msg1, strlen(msg1));
+	close(childToParent[OUT]);
 
-	close (parentToChild[1]);
+	close (parentToChild[OUT]);
 
-	read(parentToChild[0], inbuf2, strlen(msg2));
-        printf("%s\n", inbuf2); 
-	close (parentToChild[0]);
+	read(parentToChild[IN], inbufToChild, strlen(msg2));
+        printf("%s\n", inbufToChild); 
+	close (parentToChild[IN]);
         wait(NULL);
     } 
     else 
     { 
-	close (childToParent[1]);
-	read(childToParent[0], inbuf1, strlen(msg1));
-        printf("%s\n", inbuf1); 
-	close (childToParent[0]);
+	close (childToParent[OUT]);
+	read(childToParent[IN], inbufToParent, strlen(msg1));
+        printf("%s\n", inbufToParent); 
+	close (childToParent[IN]);
 
-	close (parentToChild[0]);
-	write(parentToChild[1], msg2, strlen(msg2));
-	close (parentToChild[1]);
+	close (parentToChild[IN]);
+	write(parentToChild[OUT], msg2, strlen(msg2));
+	close (parentToChild[OUT]);
     } 
     return 0; 
 } 

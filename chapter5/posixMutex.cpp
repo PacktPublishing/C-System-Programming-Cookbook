@@ -9,7 +9,7 @@ struct ThreadInfo
 
 void* increment(void *arg) 
 { 
-	ThreadInfo* info = (ThreadInfo*)arg;
+	ThreadInfo* info = static_cast<ThreadInfo*>(arg);
 	pthread_mutex_lock(&info->lock);
 
 	std::cout << "Thread Started ... " << std::endl;

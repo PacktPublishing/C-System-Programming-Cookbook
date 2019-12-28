@@ -10,7 +10,7 @@ struct ThreadInfo
 
 void* increment(void *arg) 
 { 
-	ThreadInfo* info = (ThreadInfo*)arg;
+	ThreadInfo* info = static_cast<ThreadInfo*>(arg);
 	sem_wait(&info->sem);
 
 	std::cout << "Thread Started ... " << std::endl;
@@ -50,7 +50,7 @@ int main()
 	pthread_join(t1, nullptr); 
 	pthread_join(t2, nullptr); 
 
-	std::cout << "Threads elaboration finished. Counter = " << thInfo.counter << std::endl;
+	std::cout << "posixSemaphore:: Threads elaboration finished. Counter = " << thInfo.counter << std::endl;
 	sem_destroy(&thInfo.sem); 
 	return 0; 
 }

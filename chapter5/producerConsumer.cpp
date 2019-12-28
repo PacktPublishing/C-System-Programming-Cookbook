@@ -17,8 +17,7 @@ void* producer(void *arg)
 { 
 	QueueInfo* info = (QueueInfo*)arg;
 	std::cout << "Thread Producer Started ... " << std::endl;
-    	int i;
-    	for (i = 0; i < 1000; i++) 
+    	for (int i = 0; i < 1000; i++) 
 	{
         	sem_wait(&info->full);
  
@@ -39,8 +38,7 @@ void* consumer(void *arg)
 { 
 	QueueInfo* info = (QueueInfo*)arg;
 	std::cout << "Thread Consumer Started ... " << std::endl;
-    	int i;
-    	for (i = 0; i < 1000; i++) 
+    	for (int i = 0; i < 1000; i++) 
 	{
         	sem_wait(&info->empty);
 
