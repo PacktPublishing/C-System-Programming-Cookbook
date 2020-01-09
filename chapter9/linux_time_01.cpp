@@ -9,7 +9,7 @@ int main ()
     std::cout << "Starting ..." << std::endl;
     struct timespec tsRealTime, tsMonotonicStart;
     clock_gettime(CLOCK_REALTIME, &tsRealTime);
-    clock_gettime(CLOCK_MONOTONIC_RAW, &tsMonotonicStart);
+    clock_gettime(CLOCK_MONOTONIC, &tsMonotonicStart);
 
     std::cout << "Real Time clock (i.e.: wall clock):" << std::endl;
     std::cout << " sec :" << tsRealTime.tv_sec << std::endl;
@@ -20,11 +20,11 @@ int main ()
     std::cout << " nanosec :" << tsMonotonicStart.tv_nsec << std::endl;
 
     std::vector <int> elements;
-    for (int i = 0; i < 100000000; ++i)
+    for (int i = 0; i < 100'000'000; ++i)
         elements.push_back(i);
 
     struct timespec tsMonotonicEnd;
-    clock_gettime(CLOCK_MONOTONIC_RAW, &tsMonotonicEnd);
+    clock_gettime(CLOCK_MONOTONIC, &tsMonotonicEnd);
 
     struct timespec duration;
     timespec_diff (&tsMonotonicStart, &tsMonotonicEnd, &duration);
@@ -41,7 +41,7 @@ void timespec_diff(struct timespec* start, struct timespec* stop, struct timespe
     if ((stop->tv_nsec - start->tv_nsec) < 0)
     {
         result->tv_sec = stop->tv_sec - start->tv_sec - 1;
-        result->tv_nsec = stop->tv_nsec - start->tv_nsec + 1000000000;
+        result->tv_nsec = stop->tv_nsec - start->tv_nsec + 100'000'0000;
     }
     else
     {
