@@ -8,7 +8,7 @@ int main()
 {
     std::cout << "Starting ..." << std::endl;
     signal(SIGTERM, handleSigTerm);
-    while (1) ;
+    while (true) ;
     std::cout << "Ending ..." << std::endl;
     return 0;
 }

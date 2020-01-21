@@ -5,7 +5,7 @@
 int main()
 {
     std::cout << "Starting ..." << std::endl;
-    signal(SIGTERM, SIG_IGN);
+    signal(SIGKILL, SIG_IGN);
     while (true) ;
     std::cout << "Ending ..." << std::endl;
     return 0;
