@@ -24,9 +24,9 @@ int main()
 
 void threadFunction (std::vector<int> &speeds, int start, int end, int& res)
 {
-    std::cout << "starting thread 1 ... " << std::endl;
+    std::cout << "starting thread ... " << std::endl;
     for (int i = start; i <= end; ++i)
 	res += speeds[i];
-    std::cout << "end thread 1 ... " << std::endl;
+    std::cout << "end thread ... " << std::endl;
 }
 

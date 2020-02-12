@@ -36,7 +36,7 @@ int main()
 	t1.join();
 	t2.join();
 
-	std::cout << "unique_lock:: Threads elaboration finished. Counter = " << thInfo.counter << std::endl;
+	std::cout << "Unique_lock:: Threads elaboration finished. Counter = " << thInfo.counter << std::endl;
 	return 0; 
 }
 

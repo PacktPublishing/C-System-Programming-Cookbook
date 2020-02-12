@@ -13,6 +13,12 @@ constexpr unsigned int MAX_BUFFER = 128;
 
 int main(int argc, char *argv[])
 {
+    if (argc != 2)
+    {
+        std::cerr << "Error! usage: ./client localhost" << std::endl;
+	return 6;
+    }
+
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0) 
     {
@@ -21,7 +27,7 @@ int main(int argc, char *argv[])
     }
 
     struct hostent* server = gethostbyname(argv[1]);
-    if (server == NULL) 
+    if (server == nullptr) 
     {
         std::cerr << "gethostbyname, no such host" << std::endl;
         return 2;
@@ -36,7 +42,7 @@ int main(int argc, char *argv[])
     serv_addr.sin_port = htons(SERVER_PORT);
     if (connect(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
     {
-        std::cerr << "connect error" << std::endl;
+        std::cerr << "connect error: the server does not look running" << std::endl;
         return 3;
     }
 

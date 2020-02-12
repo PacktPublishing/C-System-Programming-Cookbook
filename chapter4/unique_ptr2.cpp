@@ -19,7 +19,7 @@ int main()
 {
 	std::cout << "Start ... " << std::endl;
 	{
-		std::unique_ptr<User> developer = std::make_unique<User>();
+		auto developer = std::make_unique<User>();
 		User* developer2 = new User();
 		std::cout << "developer size = " << sizeof (developer) << std::endl; 
 		std::cout << "developer2 size = " << sizeof (developer2) << std::endl; 

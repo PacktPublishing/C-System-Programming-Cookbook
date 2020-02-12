@@ -23,7 +23,7 @@ int main()
 {
 	std::cout << "Start ... " << std::endl;
 	{
-		std::unique_ptr<User> developer = std::make_unique<User>();
+		auto developer = std::make_unique<User>();
 		developer->cheers();
 	}	
 	std::cout << "End ... " << std::endl;

@@ -1,8 +1,8 @@
 #include <type_traits>
 #include <iostream>
 
-typedef std::aligned_storage<sizeof(int), 8>::type intAligned8;
-typedef std::aligned_storage<sizeof(int), 4>::type intAligned4;
+using intAligned8 = std::aligned_storage<sizeof(int), 8>::type;
+using intAligned4 = std::aligned_storage<sizeof(int), 4>::type;
 
 int main()
 {
