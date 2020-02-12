@@ -12,8 +12,6 @@ int main ()
 
    cpu_set_t cpuset;
    CPU_ZERO(&cpuset);
-   int cpu_id = 1;
-   CPU_SET(cpu_id, &cpuset);
    cpu_id = 3;
    CPU_SET(cpu_id, &cpuset);
 
