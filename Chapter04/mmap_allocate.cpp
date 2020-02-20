@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	std::cout << "Error mapping memory " << std::endl;
 	return 1;
     }
-    std::cout << "memory allocated availabe from: " << mapPtr << std::endl;
+    std::cout << "memory allocated available from: " << mapPtr << std::endl;
 
     strcpy (mapPtr, "this is a string!");
     std::cout << "mapPtr val =  " << mapPtr << std::endl;
