@@ -1,6 +1,6 @@
 # C++ System Programming Cookbook 
 
-<a href="https://www.packtpub.com/programming/c-system-programming-cookbook?utm_source=github&utm_medium=repository&utm_campaign=9781838646554"><img src="" alt="C++ System Programming Cookbook " height="256px" align="right"></a>
+<a href="https://www.packtpub.com/programming/c-system-programming-cookbook?utm_source=github&utm_medium=repository&utm_campaign=9781838646554"><img src="https://images-na.ssl-images-amazon.com/images/I/51AS87bWIPL._SX404_BO1,204,203,200_.jpg" alt="C++ System Programming Cookbook " height="256px" align="right"></a>
 
 This is the code repository for [C++ System Programming Cookbook ](https://www.packtpub.com/programming/c-system-programming-cookbook?utm_source=github&utm_medium=repository&utm_campaign=9781838646554), published by Packt.
 
