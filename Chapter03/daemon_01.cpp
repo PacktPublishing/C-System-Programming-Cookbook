@@ -22,7 +22,7 @@ int main(void)
     {
 	setsid();
 	if (chdir("/") < 0)
-		std::cout << "Couldn't change directly" << std::endl;
+		std::cout << "Couldn't change directory" << std::endl;
 
 	// Attach here the daemon specific long running tasks ...  sleep for now.
 	sleep (10);
