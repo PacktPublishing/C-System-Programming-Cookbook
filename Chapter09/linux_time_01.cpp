@@ -41,7 +41,7 @@ void timespec_diff(struct timespec* start, struct timespec* stop, struct timespe
     if ((stop->tv_nsec - start->tv_nsec) < 0)
     {
         result->tv_sec = stop->tv_sec - start->tv_sec - 1;
-        result->tv_nsec = stop->tv_nsec - start->tv_nsec + 100'000'0000;
+        result->tv_nsec = stop->tv_nsec - start->tv_nsec + 1'000'000'000;
     }
     else
     {
