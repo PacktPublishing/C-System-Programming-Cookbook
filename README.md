@@ -43,7 +43,8 @@ With the following software and hardware list you can run all code files present
 ### Software and Hardware List
 | No | Software required | OS required |
 | -------- | ------------------------------------ | ----------------------------------- |
-|  |  |  |
+| 1 | C++ | Windows, macOS, Linux |
+| 2 | Docker | Windows, macOS, Linux |
 
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://static.packt-cdn.com/downloads/9781838646554_ColorImages.pdf).
